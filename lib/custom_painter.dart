@@ -42,12 +42,15 @@ class _HomepageState extends State<Homepage>
             return Stack(
               children: <Widget>[
                 myDrawer,
-                Transform(
-                    transform: Matrix4.identity()
-                      ..translate(slide)
-                      ..scale(scale),
-                    alignment: Alignment.centerLeft,
-                    child: myChild)
+                Transform.translate(
+                  offset: Offset(maxSlide*animationController!.value,0),
+                  child: Transform(
+                      transform: Matrix4.identity()
+                      ..setEntry(3, 2,0.001)
+                        ..rotateY(-math.pi/2*animationController!.value),
+                      alignment: Alignment.centerLeft,
+                      child: myChild),
+                )
               ],
             );
           }),
