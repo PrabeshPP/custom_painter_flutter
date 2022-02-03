@@ -15,16 +15,30 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 4));
-    animation = Tween<double>(begin: 0, end: 100).animate(controller)
-      ..addListener(() {
-        setState(() {});
-      });
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    animation = Tween<double>(begin: 0, end: 300).animate(controller);
     controller.forward();
   }
 
   @override
   Widget build(BuildContext context) {
+    return AnimatedLogo(animation: animation);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+}
+
+class AnimatedLogo extends AnimatedWidget {
+  const AnimatedLogo({Key? key, required Animation<double> animation})
+      : super(key: key, listenable: animation);
+
+  @override
+  Widget build(BuildContext context) {
+    final animation = listenable as Animation<double>;
     return Center(
       child: Container(
         height: animation.value,
@@ -32,11 +46,5 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
         child: const FlutterLogo(),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 }
