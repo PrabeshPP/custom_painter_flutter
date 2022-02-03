@@ -15,14 +15,26 @@ class LogoWidget extends StatelessWidget {
 class GrowTransition extends StatelessWidget {
   final Animation<double> animation;
   final Widget child;
-  const GrowTransition({Key? key, required this.animation, required this.child})
+  final AnimationController controller;
+  const GrowTransition(
+      {Key? key,
+      required this.animation,
+      required this.child,
+      required this.controller})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: AnimatedBuilder(
-        animation: animation,
+        animation: animation
+          ..addStatusListener((status) {
+            if (status == AnimationStatus.completed) {
+              controller.reverse();
+            } else if (status == AnimationStatus.dismissed) {
+              controller.forward();
+            }
+          }),
         builder: (context, child) {
           return SizedBox(
             height: animation.value,
@@ -43,7 +55,8 @@ class LogoApp1 extends StatefulWidget {
   _LogoApp1State createState() => _LogoApp1State();
 }
 
-class _LogoApp1State extends State<LogoApp1> with SingleTickerProviderStateMixin {
+class _LogoApp1State extends State<LogoApp1>
+    with SingleTickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
   @override
@@ -59,6 +72,6 @@ class _LogoApp1State extends State<LogoApp1> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    return GrowTransition(animation: animation, child: const LogoWidget());
+    return GrowTransition(animation: animation, child: const LogoWidget(),controller: controller,);
   }
 }
