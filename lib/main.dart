@@ -1,4 +1,4 @@
-import 'package:custom_painter_flutter/custom_painter.dart';
+import 'package:custom_painter_flutter/GestureDetector.dart';
 import 'package:flutter/material.dart';
 
 void main() {
