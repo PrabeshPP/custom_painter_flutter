@@ -1,4 +1,5 @@
 import 'package:custom_painter_flutter/AnimatedBuilder.dart';
+import 'package:custom_painter_flutter/CurvedAnimation.dart';
 import 'package:custom_painter_flutter/GestureDetector.dart';
 import 'package:custom_painter_flutter/animatedCont.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LogoApp1(),
+      home: LogoApp2(),
       
     );
   }
