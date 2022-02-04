@@ -10,13 +10,25 @@ class Page5 extends StatefulWidget {
 class _Page5State extends State<Page5> with SingleTickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
+
+  void myListener(status){
+    if (status == AnimationStatus.completed) {
+          controller.reset();
+          animation = Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn))
+              ..removeStatusListener(myListener);
+
+          controller.forward();
+        }
+    
+  }
   @override
   void initState() {
     controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3));
     animation = Tween<double>(begin: -1.0, end: 0.0).animate(
         CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn))
-        ;
+      ..addStatusListener(myListener);
     controller.forward();
     super.initState();
   }
@@ -32,7 +44,8 @@ class _Page5State extends State<Page5> with SingleTickerProviderStateMixin {
         animation: animation,
         builder: (context, child) {
           return Transform(
-            transform: Matrix4.translationValues(animation.value*width, 0.0, 0.0),
+            transform:
+                Matrix4.translationValues(animation.value * width, 0.0, 0.0),
             child: Center(
               child: Container(
                 height: 100,
