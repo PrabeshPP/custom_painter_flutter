@@ -1,10 +1,4 @@
-import 'package:custom_painter_flutter/AnimatedBuilder.dart';
-import 'package:custom_painter_flutter/AnimatedIcon.dart';
-import 'package:custom_painter_flutter/CurvedAnimation.dart';
-import 'package:custom_painter_flutter/GestureDetector.dart';
-import 'package:custom_painter_flutter/Page5.dart';
-import 'package:custom_painter_flutter/animatedCont.dart';
-import 'package:custom_painter_flutter/brick_animation.dart';
+import 'package:custom_painter_flutter/Implicit_Animations/fade_text.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: BrickAnimation(),
+      home: FadeText(),
       
     );
   }
