@@ -12,7 +12,7 @@ class _FadeTextState extends State<FadeText> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      child: Image.network(owl_url),
     );
   }
 }
