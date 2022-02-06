@@ -11,12 +11,12 @@ class FadeText extends StatefulWidget {
 }
 
 class _FadeTextState extends State<FadeText> {
+  double opacity = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        
         children: [
           Center(
             child: Container(
@@ -30,23 +30,26 @@ class _FadeTextState extends State<FadeText> {
           ),
           TextButton(
               onPressed: () {
-                 null;
+                setState(() {
+                  opacity = 1.0;
+                });
               },
-              child:const Text(
+              child: const Text(
                 "Show details",
                 style: TextStyle(color: Colors.blueAccent),
               )),
-
-        Container(
-          child: Column(
-            children:const  [
-              Text("Type:Owl"),
-              Text("Age:39"),
-              Text("Emplyoment:None")
-
-            ],
-          ),
-        )
+          AnimatedOpacity(
+            curve: Curves.easeInExpo,
+            duration: const Duration(seconds: 3),
+            child: Column(
+              children: const [
+                Text("Type:Owl"),
+                Text("Age:39"),
+                Text("Emplyoment:None")
+              ],
+            ),
+            opacity: opacity,
+          )
         ],
       ),
     );
