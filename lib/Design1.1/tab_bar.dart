@@ -33,7 +33,9 @@ class MyTab extends StatelessWidget {
         children: [
           Text(name,
           style: TextStyle(
-            color: isSelected?Colors.black:Colors.grey
+            color: isSelected?Colors.black:Colors.black38,
+            fontWeight: isSelected?FontWeight.bold:FontWeight.normal,
+            fontSize: isSelected?16:12
           ),),
           Container(
             height: 5,
