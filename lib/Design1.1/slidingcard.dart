@@ -1,3 +1,4 @@
+import 'package:custom_painter_flutter/Design1.1/tab_bar.dart';
 import 'package:flutter/material.dart';
 
 class SlidingCardsView extends StatefulWidget {
@@ -12,7 +13,7 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
+        Tabs(),
         SizedBox(
           height: MediaQuery.of(context).size.height*0.55,
           child: const SlidingCard(
