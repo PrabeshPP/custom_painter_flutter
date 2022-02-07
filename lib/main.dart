@@ -1,5 +1,6 @@
 import 'package:custom_painter_flutter/AnimationType/physics_animation.dart';
 import 'package:custom_painter_flutter/Design1.1/SlidingCard.dart';
+import 'package:custom_painter_flutter/Design1.1/mainPage1.dart';
 import 'package:custom_painter_flutter/Implicit_Animations/fade_text.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SlidingCardsView(),
+      home: DesignPage1(),
       
     );
   }
