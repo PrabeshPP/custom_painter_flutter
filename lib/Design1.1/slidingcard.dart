@@ -76,18 +76,28 @@ class SlidingCard extends StatelessWidget {
             height: 8,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blueGrey.shade900)
-                ),
-                  onPressed: () {
-                   
-                  },
-                  child:const Text("Reserve",
-                  style: TextStyle(
-                    color: Colors.white
-                  ),))
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: ElevatedButton(
+                  
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blueGrey.shade900),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)))
+                  ),
+                    onPressed: () {
+                     
+                    },
+                    child:const Text("Reserve",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),)),
+              ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12.0),
+                    child: Text("\$0.00"),
+                  )
             ],
           )
         ],
