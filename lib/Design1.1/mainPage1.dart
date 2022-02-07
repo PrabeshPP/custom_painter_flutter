@@ -10,7 +10,9 @@ class DesignPage1 extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Prabesh Bista"),
       ),
-      body: const SlidingCardsView(),
+      
+      body: const SafeArea(child:  SlidingCardsView()),
+     
     );
   }
 }
