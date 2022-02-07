@@ -30,16 +30,17 @@ class MyTab extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(name,
           style: TextStyle(
             color: isSelected?Colors.black:Colors.black38,
             fontWeight: isSelected?FontWeight.bold:FontWeight.normal,
-            fontSize: isSelected?16:12
+            fontSize: isSelected?20:12
           ),),
           Container(
             height: 5,
-            width: 12,
+            width: 16,
             decoration: BoxDecoration(
                 color: isSelected ? Colors.red : Colors.transparent,
                 borderRadius: BorderRadius.circular(4.0)),

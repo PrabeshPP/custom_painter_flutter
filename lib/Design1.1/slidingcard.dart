@@ -13,7 +13,7 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Tabs(),
+       const Tabs(),
         SizedBox(
           height: MediaQuery.of(context).size.height*0.55,
           child: const SlidingCard(
@@ -48,12 +48,16 @@ class SlidingCard extends StatelessWidget {
       child: Column(
         children: [
         ClipRRect(
+        
           borderRadius:const  BorderRadius.vertical(top:Radius.circular(32.0)),
           child: Image.asset(assetName,
               
               height: MediaQuery.of(context).size.height*0.3,
               fit: BoxFit.none,),
+            
         ),
+
+        Text(name),
      const SizedBox(
         height: 8,
       ),
