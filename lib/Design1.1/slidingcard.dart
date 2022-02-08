@@ -13,7 +13,19 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Padding(
+          padding: const EdgeInsets.only(left:12.0,top: 12.0),
+          child: Text("Book My Show",
+          style: TextStyle(
+            
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.black
+          ),),
+        ),
+        SizedBox(height: 6.0,),
         const Tabs(),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.55,
@@ -83,7 +95,7 @@ class SlidingCard extends StatelessWidget {
                 child: ElevatedButton(
                   
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blueGrey.shade900),
+                    backgroundColor: MaterialStateProperty.all(Color(0xFF162A49)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)))
                   ),
                     onPressed: () {
@@ -91,12 +103,17 @@ class SlidingCard extends StatelessWidget {
                     },
                     child:const Text("Reserve",
                     style: TextStyle(
+                      fontWeight: FontWeight.bold,
                       color: Colors.white
                     ),)),
               ),
+              
                   Padding(
                     padding: const EdgeInsets.only(right: 12.0),
-                    child: Text("\$0.00"),
+                    child: Text("\$0.00",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),),
                   )
             ],
           )
