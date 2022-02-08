@@ -10,29 +10,59 @@ class SlidingCardsView extends StatefulWidget {
 }
 
 class _SlidingCardsViewState extends State<SlidingCardsView> {
+  PageController? pageController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pageController = PageController(viewportFraction: 0.8);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    pageController!.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left:12.0,top: 12.0),
-          child: Text("Book My Show",
-          style: TextStyle(
-            
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-            color: Colors.black
-          ),),
+          padding: const EdgeInsets.only(left: 12.0, top: 12.0),
+          child: Text(
+            "Book My Show",
+            style: TextStyle(
+                fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
         ),
-        SizedBox(height: 6.0,),
+        SizedBox(
+          height: 6.0,
+        ),
         const Tabs(),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.55,
-          child: const SlidingCard(
-            name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
-            date: "4.20-30",
-            assetName: "assets/steve-johnson.jpeg",
+          child: PageView(
+            controller: pageController,
+            children:const [
+               SlidingCard(
+                name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
+                date: "4.20-30",
+                assetName: "assets/steve-johnson.jpeg",
+              ),
+              SlidingCard(
+                name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
+                date: "4.20-30",
+                assetName: "assets/rodion-kutsaev.jpeg",
+              ),
+               SlidingCard(
+                name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
+                date: "4.20-30",
+                assetName: "assets/efe-kurnaz.jpg",
+              ),
+            ],
           ),
         ),
       ],
@@ -53,7 +83,6 @@ class SlidingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Card(
       margin: const EdgeInsets.only(left: 8, right: 8, bottom: 24, top: 14),
       elevation: 8,
@@ -93,28 +122,25 @@ class SlidingCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 12.0),
                 child: ElevatedButton(
-                  
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xFF162A49)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)))
-                  ),
-                    onPressed: () {
-                     
-                    },
-                    child:const Text("Reserve",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white
-                    ),)),
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0xFF162A49)),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)))),
+                    onPressed: () {},
+                    child: const Text(
+                      "Reserve",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    )),
               ),
-              
-                  Padding(
-                    padding: const EdgeInsets.only(right: 12.0),
-                    child: Text("\$0.00",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold
-                    ),),
-                  )
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: Text(
+                  "\$0.00",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )
             ],
           )
         ],
