@@ -78,6 +78,9 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   }
 }
 
+
+
+
 class SlidingCard extends StatelessWidget {
   final String name;
   final String date;
@@ -156,6 +159,17 @@ class SlidingCard extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class SlidingContent extends StatelessWidget {
+  const SlidingContent({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
     );
   }
 }
