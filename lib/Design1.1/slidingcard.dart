@@ -19,6 +19,7 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
     pageController!.addListener(() {
       setState(() {
         pageOffset = pageController!.page;
+        
       });
     });
   }
