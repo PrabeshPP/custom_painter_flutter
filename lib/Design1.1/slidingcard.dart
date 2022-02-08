@@ -11,16 +11,20 @@ class SlidingCardsView extends StatefulWidget {
 
 class _SlidingCardsViewState extends State<SlidingCardsView> {
   PageController? pageController;
+  double? pageOffset = 0;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pageController = PageController(viewportFraction: 0.8);
+    pageController!.addListener(() {
+      setState(() {
+        pageOffset = pageController!.page;
+      });
+    });
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     pageController!.dispose();
   }
@@ -46,21 +50,24 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
           height: MediaQuery.of(context).size.height * 0.55,
           child: PageView(
             controller: pageController,
-            children:const [
-               SlidingCard(
+            children: [
+              SlidingCard(
                 name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
                 date: "4.20-30",
                 assetName: "assets/steve-johnson.jpeg",
+                pageOffset: pageOffset,
+              ),
+              SlidingCard(
+                name: 'Dawn District,Guandong HonkKong and Macao',
+                date: "4.28-31",
+                assetName: "assets/rodion-kutsaev.jpeg",
+                pageOffset: pageOffset! - 1,
               ),
               SlidingCard(
                 name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
                 date: "4.20-30",
-                assetName: "assets/rodion-kutsaev.jpeg",
-              ),
-               SlidingCard(
-                name: 'Shenzhen GLOBAL DESIGN AWARD 2018',
-                date: "4.20-30",
                 assetName: "assets/efe-kurnaz.jpg",
+                pageOffset: pageOffset! - 1,
               ),
             ],
           ),
@@ -74,8 +81,10 @@ class SlidingCard extends StatelessWidget {
   final String name;
   final String date;
   final String assetName;
+  final double? pageOffset;
   const SlidingCard(
       {Key? key,
+      required this.pageOffset,
       required this.name,
       required this.date,
       required this.assetName})
@@ -97,6 +106,7 @@ class SlidingCard extends StatelessWidget {
               assetName,
               height: MediaQuery.of(context).size.height * 0.3,
               fit: BoxFit.none,
+              alignment: Alignment(-pageOffset!.abs(), 0),
             ),
           ),
           Padding(
