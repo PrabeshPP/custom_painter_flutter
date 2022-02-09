@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:custom_painter_flutter/Design1.1/event.dart';
 import 'package:custom_painter_flutter/Design1.1/slidingcard.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -23,11 +24,11 @@ class DesignPage1 extends StatelessWidget {
 }
 
 const double minHeight = 120.0;
-const double iconStartSize = 44;  
-const double iconEndSize = 120;  
-const double iconStartMarginTop = 36;  
-const double iconEndMarginTop = 80;  
-const double iconsVerticalSpacing = 24; 
+const double iconStartSize = 44;
+const double iconEndSize = 120;
+const double iconStartMarginTop = 36;
+const double iconEndMarginTop = 80;
+const double iconsVerticalSpacing = 24;
 const double iconsHorizontalSpacing = 16;
 
 class ExhibitionBottomSheet extends StatefulWidget {
@@ -41,6 +42,16 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   double get maxHeight => MediaQuery.of(context).size.height;
+
+  double get itemBorderRadius => lerp(8, 24)!;
+  double get iconSize => lerp(iconStartSize, iconEndSize)!;
+
+  double iconTopMargin(int index) =>
+      lerp(iconStartMarginTop,
+          iconEndMarginTop + index * (iconsVerticalSpacing + iconEndSize))! +
+      headerMargin!;
+  double iconLeftMargin(int index) =>
+      lerp(index * (iconsHorizontalSpacing + iconStartSize), 0)!;
 
   @override
   void initState() {
@@ -57,14 +68,12 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
   @override
   void dispose() {
-    
     controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return AnimatedBuilder(
         animation: controller,
         builder: (context, child) {
@@ -87,7 +96,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                   children: [
                     const MenuButton(),
                     SheetHeader(
-                        fontSize: headerFontSize!, margin: headerMargin!)
+                        fontSize: headerFontSize!, margin: headerMargin!),
+                    for(Event event in events) _buildIcon(event)
                   ],
                 ),
               ),
@@ -125,6 +135,29 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
           velocity: controller.value < 0.5
               ? -2.0
               : 2.0); //<-- or just continue to whichever edge is closer
+  }
+
+
+  Widget _buildIcon(Event event){
+    int index=events.indexOf(event);
+    return Positioned(
+      height: iconSize,
+      width: iconSize,
+      top:iconTopMargin(index),
+      left: iconLeftMargin(index),
+      child:ClipRRect(
+        borderRadius: BorderRadius.horizontal(
+          left: Radius.circular(itemBorderRadius),
+          right: Radius.circular(itemBorderRadius)
+        ),
+        child: Image.asset(
+          
+          event.imageName,
+          fit: BoxFit.cover,
+          alignment: Alignment(lerp(1, 0)!, 0),
+        ),
+      ));
+
   }
 }
 

@@ -12,7 +12,7 @@ final List<Event> events = [
       title: "Shenzhen Global Design Award 2018",
       date: "4..20-30"),
   Event(
-      imageName: "assets/radion-kutsaev.jpeg",
+      imageName: "assets/rodion-kutsaev.jpeg",
       title: "Dawn District,Guandong Honkong and Macao",
       date: "4.28-31"),
   Event(
