@@ -43,6 +43,8 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
     super.initState();
   }
 
+  double? get headerMargin => lerp(20, 20 + MediaQuery.of(context).padding.top);
+  double? get headerFontSize => lerp(14, 24);
   double? lerp(double min, double max) {
     return lerpDouble(min, max, controller.value);
   }
@@ -74,8 +76,9 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(32.0))),
                 child: Stack(
-                  children: [
-                    MenuButton(),
+                  children:  [
+                   const MenuButton(),
+                    SheetHeader(fontSize: headerFontSize!, margin: headerMargin!)
                   ],
                 ),
               ),
@@ -122,12 +125,32 @@ class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Positioned(
-      right: 0,
-      bottom: 30,
-      child: Icon(
-      Icons.menu,
-      color: Colors.white,
-      size: 28,
-    ));
+        right: 0,
+        bottom: 30,
+        child: Icon(
+          Icons.menu,
+          color: Colors.white,
+          size: 28,
+        ));
+  }
+}
+
+class SheetHeader extends StatelessWidget {
+  final double fontSize;
+  final double margin;
+  const SheetHeader({Key? key,required this.fontSize,required this.margin}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: margin,
+      child:Text(
+        "Booked Exhibition",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w500
+        ),
+      ) );
   }
 }
