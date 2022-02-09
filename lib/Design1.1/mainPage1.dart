@@ -23,6 +23,12 @@ class DesignPage1 extends StatelessWidget {
 }
 
 const double minHeight = 120.0;
+const double iconStartSize = 44;  
+const double iconEndSize = 120;  
+const double iconStartMarginTop = 36;  
+const double iconEndMarginTop = 80;  
+const double iconsVerticalSpacing = 24; 
+const double iconsHorizontalSpacing = 16;
 
 class ExhibitionBottomSheet extends StatefulWidget {
   const ExhibitionBottomSheet({Key? key}) : super(key: key);
@@ -51,12 +57,14 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
 
   @override
   void dispose() {
+    
     controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    
     return AnimatedBuilder(
         animation: controller,
         builder: (context, child) {
@@ -76,9 +84,10 @@ class _ExhibitionBottomSheetState extends State<ExhibitionBottomSheet>
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(32.0))),
                 child: Stack(
-                  children:  [
-                   const MenuButton(),
-                    SheetHeader(fontSize: headerFontSize!, margin: headerMargin!)
+                  children: [
+                    const MenuButton(),
+                    SheetHeader(
+                        fontSize: headerFontSize!, margin: headerMargin!)
                   ],
                 ),
               ),
@@ -138,19 +147,19 @@ class MenuButton extends StatelessWidget {
 class SheetHeader extends StatelessWidget {
   final double fontSize;
   final double margin;
-  const SheetHeader({Key? key,required this.fontSize,required this.margin}) : super(key: key);
+  const SheetHeader({Key? key, required this.fontSize, required this.margin})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: margin,
-      child:Text(
-        "Booked Exhibition",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: fontSize,
-          fontWeight: FontWeight.w500
-        ),
-      ) );
+        top: margin,
+        child: Text(
+          "Booked Exhibition",
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: fontSize,
+              fontWeight: FontWeight.w500),
+        ));
   }
 }
