@@ -6,9 +6,15 @@ class DesignPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body:  SafeArea(child:  SlidingCardsView()),
+    return  Scaffold(
+      body:  Stack(
+        children: [
+          SafeArea(child:  SlidingCardsView()),
+        ],
+      ),
      
     );
   }
 }
+
+
