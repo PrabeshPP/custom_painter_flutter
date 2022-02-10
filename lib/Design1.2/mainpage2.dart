@@ -13,10 +13,9 @@ class _LoginPageState extends State<LoginPage>
   late Animation<double> animation;
   @override
   void initState() {
-    controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 500));
-    animation = Tween<double>(begin: 50.0, end: 50.0).animate(controller)
-        ;
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
+    animation = Tween<double>(begin: 0, end: 30).animate(controller);
     animation.addListener(() {
       setState(() {});
     });
@@ -45,10 +44,8 @@ class _LoginPageState extends State<LoginPage>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Transform.translate(
-                
-                offset:Offset(0,animation.value) ,
+                offset: Offset(0, animation.value),
                 child: Container(
-                  alignment: Alignment(0, animation.value),
                   height: 100,
                   width: 100,
                   color: Colors.red,
