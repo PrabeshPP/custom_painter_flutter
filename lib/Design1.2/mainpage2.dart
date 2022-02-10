@@ -10,12 +10,26 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation animation;
+  late Animation<double> animation;
   @override
   void initState() {
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3));
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeInQuad);
+        AnimationController(vsync: this, duration: const Duration(seconds: 500));
+    animation = Tween<double>(begin: 50.0, end: 50.0).animate(controller)
+        ;
+    animation.addListener(() {
+      setState(() {});
+    });
+
+    animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward();
+      }
+    });
+
+    controller.forward();
 
     super.initState();
   }
@@ -28,10 +42,17 @@ class _LoginPageState extends State<LoginPage>
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
-            children: const [
-              Icon(
-                Icons.airplane_ticket,
-                size: 100,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Transform.translate(
+                
+                offset:Offset(0,animation.value) ,
+                child: Container(
+                  alignment: Alignment(0, animation.value),
+                  height: 100,
+                  width: 100,
+                  color: Colors.red,
+                ),
               )
             ],
           ),
