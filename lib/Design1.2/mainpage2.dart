@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage>
               ),
              InkWell(
                onTap: (){
-                 
+
                },
                child: Row(
                  mainAxisAlignment: MainAxisAlignment.center,
