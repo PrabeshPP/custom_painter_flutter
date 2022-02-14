@@ -17,10 +17,10 @@ class _LoginPageState extends State<LoginPage>
   @override
   void initState() {
     controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 800));
+        vsync: this, duration: const Duration(milliseconds: 500));
     animation = Tween<double>(begin: 0, end: 30).animate(controller);
 
-    animation1 = Tween<double>(begin: 0.1, end: 0.6).animate(controller);
+    animation1 = Tween<double>(begin: 0.07, end: 0.3).animate(controller);
     animation.addListener(() {
       setState(() {});
     });
@@ -45,7 +45,8 @@ class _LoginPageState extends State<LoginPage>
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Column(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+          
             children: [
               Transform.translate(
                   offset: Offset(0, animation.value),
@@ -76,12 +77,62 @@ class _LoginPageState extends State<LoginPage>
                       height: 100,
                       width: 100,
                       decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 54, 46, 46),
+                          color: Color.fromARGB(255, 95, 91, 91),
                           shape: BoxShape.circle),
                     ),
                   ),
                 ),
-              )
+              ),
+              const Padding(
+                padding:  EdgeInsets.only(left: 12.0,right: 12.0),
+                child:  Text(
+                  "What are you \n working on ?",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 50,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+              const Text("Dribble is where designers get \ninspired and hired",
+              style: TextStyle(
+                fontSize: 12.0
+              ),),
+
+              Container(
+                height: 50,
+                width: 250,
+                decoration:  BoxDecoration(
+                  color: Colors.pink,
+                  borderRadius: BorderRadius.circular(8.0)
+
+                ),
+                child:const Center(
+                  child:  Text(
+                  "Sign up",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0
+                  ),
+                  ),
+                ),
+              ),
+             InkWell(
+               onTap: (){
+                 
+               },
+               child: Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children:const [
+                  Text("I already have an account",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 15.0
+                  ),),
+                  Icon(Icons.arrow_forward,
+                  color: Colors.blueAccent,)
+                 ],
+               ),
+             )
             ],
           ),
         ),
