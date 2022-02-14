@@ -46,60 +46,62 @@ class _LoginPageState extends State<LoginPage>
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-         
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(height: MediaQuery.of(context).size.height*0.3,width: MediaQuery.of(context).size.width*0.3,color: Colors.red,child: AnimationBall(animation: animation, animation1: animation1)),
+              AnimationBall(animation: animation, animation1: animation1),
               const Padding(
-                padding:  EdgeInsets.only(left: 12.0,right: 12.0),
-                child:  Text(
-                  "What are you \n working on ?",
+                padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                child: Text(
+                  "What are you \n  working on ?",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 50,
                       fontWeight: FontWeight.w900),
                 ),
               ),
-              const Text("Dribble is where designers get \ninspired and hired",
-              style: TextStyle(
-                fontSize: 12.0
-              ),),
-
-              Container(
-                height: 50,
-                width: 250,
-                decoration:  BoxDecoration(
-                  color: Colors.pink,
-                  borderRadius: BorderRadius.circular(8.0)
-
+              const Padding(
+                padding: EdgeInsets.only(top: 16.0),
+                child: Text(
+                  "Dribble is where designers get \n             inspired and hired.",
+                  style: TextStyle(fontSize: 18.0),
                 ),
-                child:const Center(
-                  child:  Text(
-                  "Sign up",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22.0),
+                child: Container(
+                  height: 50,
+                  width: 250,
+                  decoration: BoxDecoration(
+                      color: Colors.pink,
+                      borderRadius: BorderRadius.circular(8.0)),
+                  child: const Center(
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
                   ),
                 ),
               ),
-             InkWell(
-               onTap: (){
-
-               },
-               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children:const [
-                  Text("I already have an account",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 15.0
-                  ),),
-                  Icon(Icons.arrow_forward,
-                  color: Colors.blueAccent,)
-                 ],
-               ),
-             )
+              Padding(
+                padding: const EdgeInsets.only(top: 19.0),
+                child: InkWell(
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "I already have an account",
+                        style: TextStyle(color: Colors.blue, fontSize: 15.0),
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.blueAccent,
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
