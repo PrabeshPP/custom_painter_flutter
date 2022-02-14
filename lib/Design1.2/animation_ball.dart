@@ -18,17 +18,13 @@ class _AnimationBallState extends State<AnimationBall> {
       children: [
         Transform.translate(
             offset: Offset(0, widget.animation.value),
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.15),
-              child: Container(
-                height: 100,
-                width: 100,
-                child: Image.asset(
-                  "assets/ball.png",
-                  fit: BoxFit.cover,
-                  color: Colors.pink,
-                ),
+            child: Container(
+              height: 100,
+              width: 100,
+              child: Image.asset(
+                "assets/ball.png",
+                fit: BoxFit.cover,
+                color: Colors.pink,
               ),
             )),
         Transform(
@@ -38,9 +34,7 @@ class _AnimationBallState extends State<AnimationBall> {
           child: Opacity(
             opacity: widget.animation1.value,
             child: Padding(
-              padding: EdgeInsets.only(
-                  top: (MediaQuery.of(context).size.height * 0.15) + 90,
-                  right: MediaQuery.of(context).size.width * 0.17),
+              padding:const EdgeInsets.only(top: 42.0),
               child: Container(
                 height: 100,
                 width: 100,

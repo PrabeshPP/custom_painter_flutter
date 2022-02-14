@@ -47,9 +47,9 @@ class _LoginPageState extends State<LoginPage>
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(crossAxisAlignment: CrossAxisAlignment.center,
-          
+         
             children: [
-              AnimationBall(animation: animation, animation1: animation1),
+              Container(height: MediaQuery.of(context).size.height*0.3,width: MediaQuery.of(context).size.width*0.3,color: Colors.red,child: AnimationBall(animation: animation, animation1: animation1)),
               const Padding(
                 padding:  EdgeInsets.only(left: 12.0,right: 12.0),
                 child:  Text(
