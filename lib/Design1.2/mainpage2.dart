@@ -1,3 +1,4 @@
+import 'package:custom_painter_flutter/Design1.2/animation_ball.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -48,41 +49,7 @@ class _LoginPageState extends State<LoginPage>
           child: Column(crossAxisAlignment: CrossAxisAlignment.center,
           
             children: [
-              Transform.translate(
-                  offset: Offset(0, animation.value),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.15),
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      child: Image.asset(
-                        "assets/ball.png",
-                        fit: BoxFit.cover,
-                        color: Colors.pink,
-                      ),
-                    ),
-                  )),
-              Transform(
-                transform: Matrix4.skewX(0.0)
-                  ..rotateY(25)
-                  ..rotateX(30),
-                child: Opacity(
-                  opacity: animation1.value,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        top: (MediaQuery.of(context).size.height * 0.15) + 90,
-                        right: MediaQuery.of(context).size.width * 0.17),
-                    child: Container(
-                      height: 100,
-                      width: 100,
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 95, 91, 91),
-                          shape: BoxShape.circle),
-                    ),
-                  ),
-                ),
-              ),
+              AnimationBall(animation: animation, animation1: animation1),
               const Padding(
                 padding:  EdgeInsets.only(left: 12.0,right: 12.0),
                 child:  Text(
