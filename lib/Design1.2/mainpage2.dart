@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -45,11 +46,7 @@ class _LoginPageState extends State<LoginPage>
             children: [
               Transform.translate(
                 offset: Offset(0, animation.value),
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.red,
-                ),
+                child:
               )
             ],
           ),
