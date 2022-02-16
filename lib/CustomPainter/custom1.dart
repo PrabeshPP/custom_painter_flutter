@@ -24,12 +24,10 @@ class MyCustomClipper extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path();
-    // path.moveTo(0, size.height * 0.33);
-    // path.lineTo(0, size.height);
-    // path.lineTo(size.width, size.height);
-    // path.lineTo(size.width, 0);
-    path.quadraticBezierTo(
-        size.width/2, size.height, size.width, size.height / 2);
+    path.lineTo(0, size.height);
+    path.lineTo(size.width, size.height / 2);
+    path.lineTo(size.width, 0);
+
     return path;
   }
 
