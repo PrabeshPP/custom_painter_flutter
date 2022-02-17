@@ -26,12 +26,12 @@ class MyCustomClipper extends CustomClipper<Path> {
     Path path = Path();
     path.lineTo(0.0, size.height);
     Offset firstControllPoint = Offset(size.width / 4, size.height / 2);
-    Offset firstEndPoint = Offset(size.width / 2, size.height);
+    Offset firstEndPoint = Offset(size.width / 2, size.height-90);
     path.quadraticBezierTo(firstControllPoint.dx, firstControllPoint.dy,
         firstEndPoint.dx, firstEndPoint.dy);
-    Offset secondControlPoint = Offset((size.width * 3) / 4, size.height / 2);
+    Offset secondControlPoint = Offset((size.width * 3) / 4, size.height);
     ;
-    Offset secondEndPoint = Offset(size.width, size.height);
+    Offset secondEndPoint = Offset(size.width, size.height/2);
     path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
         secondEndPoint.dx, secondEndPoint.dy);
 
